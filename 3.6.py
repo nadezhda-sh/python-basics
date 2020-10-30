@@ -6,17 +6,15 @@
 # Сделать вывод исходной строки, но каждое слово должно начинаться с заглавной буквы.
 # Необходимо использовать написанную ранее функцию int_func().
 
-def int_func():
-    alp_lat = set(chr(i) for i in range(ord('a'), ord('z') + 1))
-    string_lower = input('Введите строку из слов через пробел: ').lower().split( )
-    for word in string_lower:
-        for let in word.split():
-            if len(set(let[1:]).intersection(alp_lat)) > 0:
-                string = ' '.join(string_lower)
-                return string.title()
-            else:
-                return 'Attention: Используем только латинские буквы'
+def int_func(*args):
+    if all(96 < ord(let) < 123 for let in word):
+        new_string = ''.join(word)
+        return new_string.title()
+    else:
+        return 'Не те буквы'
 
 
-
-print(int_func())
+string = input('Введите слова: ').split()
+for word in string:
+    res = int_func()
+    print(res)
