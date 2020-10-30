@@ -14,7 +14,7 @@ def int_func(*args):
         return 'Не те буквы'
 
 
-string = input('Введите слова: ').split()
+string = input('Введите слова: ').lower().split()
 for word in string:
     res = int_func()
     print(res)
