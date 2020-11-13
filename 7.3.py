@@ -27,26 +27,27 @@ class Cell:
         self.nucleus = nucleus
 
     def __add__(self, other):
-        return Cell(self.nucleus + other.nucleus)
+        return Cell(self.nucleus + other.nucleus).make_order
 
     def __sub__(self, other):
         if self.nucleus != other.nucleus:
-            return Cell(abs(self.nucleus - other.nucleus))
+            return Cell(abs(self.nucleus - other.nucleus)).make_order
         else:
             return f'Одинаковые клетки нельзя вычитать'
 
     def __mul__(self, other):
-        return Cell(self.nucleus * other.nucleus)
+        return Cell(self.nucleus * other.nucleus).make_order
 
     def __truediv__(self, other):
-        return Cell(self.nucleus // other.nucleus)
+        return Cell(self.nucleus // other.nucleus).make_order
 
     def __str__(self):
         return f'{self.nucleus}'
 
+    @property
     def make_order(self):
         pic = []
-        nucleus_in_line = int(input('Сколько ячеек в ряду: '))
+        nucleus_in_line = 5
         lines = self.nucleus // nucleus_in_line
         res = self.nucleus % nucleus_in_line
         for el in range(lines):
@@ -60,9 +61,7 @@ class Cell:
 bac_1 = Cell(int(input('Введите число ячеек в первой клетке: ')))
 bac_2 = Cell(int(input('Введите число ячеек во второй клетке: ')))
 
-print(f'Сложение клеток: {bac_1 + bac_2}')
-print(f'Разница между клетками клеток: {bac_1 - bac_2}')
-print(f'Умножение клеток: {bac_1 * bac_2}')
-print(f'Деление клеток: {bac_1 / bac_2}')
-print(f'Вид первой бактерии:\n{bac_1.make_order()}')
-print(f'Вид второй бактерии:\n{bac_2.make_order()}')
+print(f'Сложение клеток:\n{bac_1 + bac_2}')
+print(f'Разница между клетками клеток:\n{bac_1 - bac_2}')
+print(f'Умножение клеток:\n{bac_1 * bac_2}')
+print(f'Деление клеток:\n{bac_1 / bac_2}')
